@@ -1,0 +1,12 @@
+class Solution:
+    # @return an integer
+    def reverse(self, x):
+        abs_x=abs(x)
+        string=str(abs_x)
+        revised_string=string[::-1]
+        revised_num = int( revised_string)
+        if abs_x != x:
+            revised_num= - revised_num
+        
+        return revised_num
+    

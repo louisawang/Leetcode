@@ -1,14 +1,17 @@
-
 class Solution:
     # @param a list of integers
     # @return an integer
     def removeDuplicates(self, A):
 
         i=0
+        B={}
         if len(A)==0:
             return 0
-        for j in range(1, len(A)):
-            if A[i]!=A[j]: 
-                i=i+1
-                A[i]=A[j]
-        return i+1
+        else:
+            B[0]=A[0]
+            for k in range(1, len(A)):
+                if  B[i]!=A[k]: 
+                    i=i+1
+                    B[i]=A[k]
+            A=B
+            return i+1

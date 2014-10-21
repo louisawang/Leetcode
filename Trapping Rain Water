@@ -1,0 +1,28 @@
+class Solution:
+    # @param A, a list of integers
+    # @return an integer
+    def trap(self, A):
+        if len(A)<=2:
+            return 0
+        
+        left, right, i , total_water=0,0,0,0
+        
+        while i <len(A):
+            interval_sum=0
+            temp_water=0
+            
+            while i+1<len(A) and (A[i]==0 or A[i]<=A[i+1]):
+                i+=1
+            left=i
+            while i+1<len(A) and A[i]>=A[i+1]:
+                interval_sum+=A[i]
+                i+=1
+            mid=i
+            while i+1<len(A) and A[i]<=A[i+1] and A[i]<=A[left]:
+                interval_sum+=A[i]
+                i+=1
+            right=i
+            temp_water=(right-left)*min(A[right], A[left]) - interval_sum
+            total_water+=temp_water
+            
+        return total_water

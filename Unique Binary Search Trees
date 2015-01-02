@@ -1,0 +1,14 @@
+class Solution:
+    # @return an integer
+    def numTrees(self, n):
+        if n==1 or n==0:  
+            return 1
+            
+        k=0
+        
+        for i in range(n):
+            k+=self.numTrees(i)*self.numTrees(n-1-i)
+        
+        
+        return k
+        

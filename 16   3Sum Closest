@@ -1,0 +1,38 @@
+class Solution:
+    # @return an integer
+    def threeSumClosest(self, num, target):
+        
+        L=sorted(num)
+        result=[]
+        i=0
+        distance=1000
+        sum=1000
+        while i <len(L)-2 and distance>0:
+            current_distance=1000
+            current_sum=1000
+            j=i+1
+            k=len(L)-1
+            
+            while j<k and current_distance>0:
+                if L[i]+L[j]+L[k]<target:
+                    if current_distance> abs(L[i]+L[j]+L[k]-target):
+                        current_distance=abs(L[i]+L[j]+L[k]-target)
+                        current_sum=L[i]+L[j]+L[k]
+                    j=j+1
+                elif L[i]+L[j]+L[k]>target:
+                    if current_distance> abs(L[i]+L[j]+L[k]-target):
+                        current_distance=abs(L[i]+L[j]+L[k]-target)
+                        current_sum=L[i]+L[j]+L[k]
+                    k=k-1
+            
+                else:
+                    current_distance= 0 
+                    current_sum=target
+                    
+            if distance> current_distance:        
+                distance=current_distance
+                sum=current_sum
+            
+            i=i+1
+            
+        return sum

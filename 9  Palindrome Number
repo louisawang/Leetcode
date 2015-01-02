@@ -1,0 +1,13 @@
+class Solution:
+    # @return a boolean
+    def isPalindrome(self, x):
+        if x < 0:
+            return False
+        mid=len(str(x))/2
+       # pal=False
+        i = 0
+       
+        if len(str(x)) % 2 ==1:
+            return str(x)[0:mid]==str(x)[len(str(x))-1:mid:-1]
+        else:
+            return str(x)[0:mid]==str(x)[len(str(x))-1:mid-1:-1]

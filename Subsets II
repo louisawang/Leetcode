@@ -1,0 +1,21 @@
+class Solution:
+    # @param num, a list of integer
+    # @return a list of lists of integer
+    def subsetsWithDup(self, S):
+        S=sorted(S)
+        k=len(S)
+        n=2**k
+        final=[]
+        for i in range(n):  # remember this is from 0  to n-1
+            
+            current_bin=bin(i)[:1:-1]  # use this reverse form, otherwise first item of the set will be counted multyple times
+          
+            current_Set=[]
+            for j in range(len(current_bin)):
+                if current_bin[j]=='1':
+                    current_Set.append(S[j])
+            if current_Set not in final:         
+                final.append(current_Set)
+            
+        return final
+            

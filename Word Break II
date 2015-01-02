@@ -1,0 +1,43 @@
+
+class Solution:
+    # @param s, a string
+    # @param dict, a set of string
+    # @return a list of strings
+    
+    def wordcanBreak(self, s, dict):
+        possible = []
+        for i in range(len(s)):
+            if s[:i+1] in dict:
+                possible.append(True)
+            else:
+                find=False
+                j=0
+                while j<i and not find:
+                    if possible[j]==True and s[j+1:i+1] in dict:
+                            find= True
+                    j+=1
+                    
+                possible.append(find)
+                
+        return possible[len(s)-1]
+    
+    
+    def wordBreak(self, s, dict):
+        
+        if not self.wordcanBreak(s, dict):
+            return []
+        possible_list = {}
+   
+        for i in range(len(s)):
+           
+            if s[:i+1] in dict:
+                possible_list[s[:i+1]]= [s[:i+1]]
+            j=0
+            for j in range(i):
+                if s[:j+1] in possible_list and s[j+1:i+1] in dict:
+                    if not s[:i+1] in possible_list:
+                        possible_list[s[0:i+1]]=[]
+                    for key in possible_list[s[:j+1]]:
+                        possible_list[s[:i+1]].append( key+" "+s[j+1:i+1])
+                
+        return possible_list[s]

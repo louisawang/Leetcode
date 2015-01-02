@@ -1,0 +1,23 @@
+class Solution:
+    # @param A, a list of integers
+    # @param target, an integer to be inserted
+    # @return integer
+    def searchInsert(self, A, target):
+        first=0
+        last=len(A)-1
+        found=False
+        while first<=last and not found:
+            mid=(first+last)/2
+            
+            if A[mid]==target:
+                found=True
+            else:
+                if A[mid]>target:
+                    last=mid-1
+                else:
+                    first=mid+1
+                    
+        if found==True:
+            return mid
+        else:
+            return first

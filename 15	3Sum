@@ -1,0 +1,28 @@
+class Solution:
+    # @return a list of lists of length 3, [[val1,val2,val3]]
+    def threeSum(self, num):
+        L=sorted(num)
+        result=[]
+        i=0
+        while i <len(L)-2 and L[i]<=0:
+            j=i+1
+            k=len(L)-1
+            
+            while j<k:
+                if L[i]+L[j]+L[k]<0:
+                    j=j+1
+                elif L[i]+L[j]+L[k]>0:
+                    k=k-1
+            
+                else:
+                    result.append([L[i], L[j], L[k]])
+                    j=j+1
+                    k=k-1
+                    while L[j]==L[j-1] and j<k:
+                        j=j+1
+                    while L[k]==L[k+1] and j<k:
+                        k=k-1
+            i=i+1
+            while i<len(L)-2 and L[i]==L[i-1]:
+                i=i+1
+        return result

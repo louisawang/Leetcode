@@ -1,0 +1,85 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    # @return a ListNode
+    def addTwoNumbers(self, l1, l2):
+        result=ListNode(0)
+        
+        add_next=0
+        
+     #   if l1 is None:
+     #       return l2
+            
+     #   if l2 is None:
+     #       return l1
+        
+        current=result    
+        while l1 and l2:
+            
+            if l1 and l2:
+                current.val=l1.val+l2.val+add_next
+            else:
+                current.val=add_next
+            if current.val <10:
+                add_next=0
+            else:
+                current.val-=10
+                add_next=1
+            l1=l1.next
+            l2=l2.next
+            if l1 or l2:
+                new_node=ListNode(0)
+                current.next=new_node
+                current=current.next
+            
+                
+        if l1 is None:
+            while l2 :
+                if l2:
+                    current.val=l2.val+add_next
+                else:
+                    current.val=add_next
+                if current.val <10:
+                    add_next=0
+                else:
+                    current.val-=10
+                    add_next=1
+                l2=l2.next
+                if  l2 :
+                    new_node=ListNode(0)
+                    current.next=new_node
+                    current=current.next
+            
+             
+        
+        if l2 is None:
+            while l1 :
+                if l1:
+                    current.val=l1.val+add_next
+                else:
+                    current.val=add_next
+                if current.val <10:
+                    add_next=0
+                else:
+                    current.val-=10
+                    add_next=1
+                    
+                l1=l1.next       
+                if l1 :
+                    new_node=ListNode(0)
+                    current.next=new_node
+                    current=current.next
+            
+                
+        if add_next==1:
+            new_node=ListNode(0)
+            current.next=new_node
+            current=current.next
+            current.val=1
+                
+        return result
+                

@@ -1,0 +1,31 @@
+# Definition for a  binary tree node
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+
+            
+class Solution:
+    # @param root, a tree node
+    # @return a boolean
+    
+
+    
+    def isValidBSTRecur(self, root, upper, lower):
+        if root is None:
+            return True
+            
+#        if root.left is None and root.right is None:  be careful! should not add this condition
+#            return True
+            
+        if root.val <=lower or root.val >=upper:
+            return False
+            
+        return self.isValidBSTRecur(root.left, root.val,lower ) and self.isValidBSTRecur(root.right, upper, root.val)
+            
+            
+    def isValidBST(self, root):
+       
+        return self.isValidBSTRecur( root,  9223372036854775807, -9223372036854775808)

@@ -1,0 +1,19 @@
+class Solution:
+    # @return an integer
+    def reverse(self, x):
+        if abs(x)==x:
+            sign=1
+        else:
+            sign=-1
+        remainder=abs(x)
+        stack=[]
+        while remainder >0:
+            stack.append(remainder%10)
+            remainder=remainder/10
+        
+        i=0
+        rev_x=0
+        for i in range(len(stack)):
+            rev_x+=stack[len(stack)-i-1]*(10**i)
+            
+        return sign*rev_x

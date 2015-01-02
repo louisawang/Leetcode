@@ -1,0 +1,38 @@
+class Solution:
+    # @param board, a 9x9 2D array
+    # @return a boolean
+    def isValidSudoku(self, board):
+        still_valid=True
+        map={}
+        for i in range(9):
+            map={}
+            for j in range(9):
+                if board[i][j]!='.':
+                    if board[i][j] in map:
+                        return False
+                    else:
+                        map[board[i][j]]=1
+                    
+                    
+        for i in range(9):
+            map={}
+            for j in range(9):
+                if board[j][i]!='.':
+                    if board[j][i] in map:
+                        return False
+                    else:
+                        map[board[j][i]]=1
+                    
+                    
+        for m in range(3):
+            for n in range(3):
+                map={}
+                for i in range(3):
+                    for j in range(3):
+                        if board[m*3+i][n*3+j]!='.':
+                            if board[m*3+i][n*3+j] in map:
+                                return False
+                            else:
+                                map[board[m*3+i][n*3+j]]=1
+                            
+        return True

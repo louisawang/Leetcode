@@ -1,0 +1,19 @@
+class Solution:
+    # @param ratings, a list of integer
+    # @return an integer
+    def candy(self, ratings):
+        N=len(ratings)
+        count=[1]*N
+        for i in range(N-1):
+            if ratings[i]<ratings[i+1]:
+                if count[i]>=count[i+1]:
+                    count[i+1]=count[i]+1
+        
+        for i in range(N-1):
+            if ratings[N-i-1] <ratings[N-i-2]:
+                if count[N-i-1]>=count[N-i-2]:
+                    count[N-i-2]=count[N-i-1]+1
+            
+            
+        return sum(count)
+                

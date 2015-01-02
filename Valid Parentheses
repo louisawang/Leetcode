@@ -1,0 +1,24 @@
+class Solution:
+    # @return a boolean
+    def isValid(self, s):
+        open_Parentheses =['(','{', '[']
+        close_Parentheses =[')','}', ']']
+        match={'(':')', '[':']', '{':'}'}
+       
+        last=''
+        li=[]
+        
+        
+        for i in range(len(s)):
+            if s[i] in open_Parentheses:
+                li.append(s[i])
+            else:
+                if len(li)==0:
+                    return False
+                else:
+                    last=li.pop()
+                    if match[last]!= s[i]:
+                        return False
+                   
+        return len(li)==0
+            

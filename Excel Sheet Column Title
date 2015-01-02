@@ -1,0 +1,17 @@
+class Solution:
+    # @return a string
+    def convertToTitle(self, num):
+        letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        current=""
+        current_num=num
+        while current_num>0:
+            reminder=current_num%26
+            if reminder !=0:
+                current=letters[reminder-1]+current
+                
+                current_num=(current_num-reminder)/26
+            else:
+                current=letters[25]+current
+                current_num=(current_num-26)/26
+                
+        return current

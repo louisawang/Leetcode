@@ -1,0 +1,25 @@
+class Solution:
+    # @param matrix, a list of lists of integers
+    # RETURN NOTHING, MODIFY matrix IN PLACE.
+    def setZeroes(self, matrix):
+        if len(matrix)==0:
+            return None
+        row_zeros=[]
+        col_zeros=[]
+        m=len(matrix)
+        n=len(matrix[0])
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j]==0:
+                    row_zeros.append(i)
+                    col_zeros.append(j)
+                    
+        for item in row_zeros:
+            for i in range(n):
+                matrix[item][i]=0
+        
+        for item in col_zeros:
+            for i in range(m):
+                matrix[i][item]=0
+                
+        return None

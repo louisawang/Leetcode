@@ -1,0 +1,21 @@
+class Solution:
+    # @return a string
+    def longestCommonPrefix(self, strs):
+        if len(strs)==0:
+            return ''
+        else:
+            string=strs[0]
+            length=0
+            common=True
+            i=0
+            while i <len(string) and common:
+                j=0
+                while j < len(strs) and i < len(strs[j]) and string[i]==strs[j][i]:
+                    j=j+1
+                if j==len(strs):
+                    i=i+1
+                else:
+                    common = False
+            
+            return string[:i]
+            

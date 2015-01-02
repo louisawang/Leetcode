@@ -1,0 +1,25 @@
+class Solution:
+    # @param prices, a list of integer
+    # @return an integer
+    def maxProfit(self, prices):
+        if len(prices)<=1:
+            return 0
+        
+        buy_price, sell_price, current_max, low, high=prices[0],0 , 0, 0, 0
+       
+        for i in range(len(prices)):
+            if buy_price > prices[i]:
+                buy_price = prices[i]
+                low=i
+                if low < high and sell_price-buy_price> current_max:
+                    current_max=sell_price-buy_price
+                elif low>high:
+                    high=low
+                    sell_price=0
+                
+            elif  sell_price < prices[i]:
+                sell_price=prices[i]
+                high=i
+                if low < high and sell_price-buy_price> current_max:
+                    current_max=sell_price-buy_price
+        return current_max

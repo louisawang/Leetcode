@@ -1,0 +1,24 @@
+class Solution:
+    # @param A, a list of integers
+    # @return a boolean
+    def canJump(self, A):
+        if len(A)==0:
+            return False
+            
+        i=0 
+        current_stop=0
+        while i < len(A):
+            current_stop=i+A[i]
+            if current_stop >= len(A)-1:
+                return True
+            else:
+                if A[current_stop]==0:
+                    if A[i]==0:
+                        return False
+                    else:
+                        i=i+1
+                else:
+                    i=current_stop
+                
+                        
+        return True

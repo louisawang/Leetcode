@@ -1,0 +1,20 @@
+class Solution:
+    # @param num, a list of integers
+    # @return an integer
+    def majorityElement(self, num):
+        map={}
+        found=False
+        i=0
+        n=len(num)
+        while i < n and not found:
+            if num[i] in map:
+                map[num[i]]+=1
+                
+            else:
+                map[num[i]]=1
+            
+            if map[num[i]] >=(n+1)/2:
+                return num[i]
+       
+            i+=1
+        

@@ -1,0 +1,25 @@
+class Solution:
+    # @param gas, a list of integers
+    # @param cost, a list of integers
+    # @return an integer
+    def canCompleteCircuit(self, gas, cost):
+        if sum(cost)> sum(gas):
+            return -1
+        else:
+            position=0
+            max_cost=0
+           
+            remainder=[0]*len(gas)
+            remainder[0]=-cost[0]+gas[0]
+            for i in range(1,len(gas)):
+                remainder[i]=remainder[i-1]-cost[i]+gas[i]
+            
+            position=0
+            mininal=remainder[0]
+            n=len(remainder)
+            for i in range(1, n): 
+                if remainder[i]<mininal:
+                    mininal = remainder[i]
+                    position =i
+            
+            return (position+1) % n   

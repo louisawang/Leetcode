@@ -1,0 +1,26 @@
+class Solution:
+    # @param A, a list of integers
+    # @return an integer
+    def maxProduct(self, A):
+        if len(A)==0:
+            return 0
+        
+        local_maximum=A[0] # including i , the max.
+        local_minimum=A[0] # including i , the min
+        global_max=A[0]    # by i, the global max, 
+        global_min=A[0]    # by i , the global min
+        
+        i=1
+        while i <len(A):
+     
+            current_max= local_maximum
+            current_min= local_minimum
+            local_maximum=max( current_max*A[i],  current_min*A[i], A[i])
+            local_minimum=min( current_max*A[i],  current_min*A[i], A[i])
+            
+            global_max=max(global_max, local_maximum)
+            global_min=min(global_min, local_minimum)
+                
+            i+=1
+            
+        return global_max

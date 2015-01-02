@@ -1,0 +1,30 @@
+class Solution:
+    # @param A, a list of integers
+    # @return an integer
+    def firstMissingPositive(self, A):
+        
+        n = len(A)
+        if n == 0:
+            return 1
+        dict={} # 0: appeard in list; 1: missing; 2: appread and is some other number +1
+        
+        dict[1]=1
+        result=1
+        for i in range(n):
+            
+            if A[i]>0:
+                if A[i] not in dict:
+                    dict[A[i]]=0
+                
+                elif A[i] in dict and dict[A[i]]==1:
+                    dict[A[i]]=2
+                
+                if A[i]+1 not in dict:
+                    dict[A[i]+1]=1
+            
+        final={}
+        for key in dict:
+            if dict[key]==1:
+                final[key]=1
+        s=sorted(final.keys())    
+        return s[0]

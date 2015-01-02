@@ -1,0 +1,15 @@
+class Solution:
+    # @param matrix, a list of lists of integers
+    # @return a list of lists of integers
+    def rotate(self, matrix):
+        if len(matrix)<=0:
+            return matrix
+        
+        n=len(matrix)    
+        rotated_matrix=[[0 for x in range(n)] for x in range(n)]  # this is the way to generate matrix
+        for i in range(n):
+            for j in range(n):
+                rotated_matrix[i][j]=matrix[n-1-j][i]
+                
+        return rotated_matrix
+        

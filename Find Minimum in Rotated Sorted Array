@@ -1,0 +1,25 @@
+class Solution:
+    # @param num, a list of integer
+    # @return an integer
+    def findMin(self, num):
+        if len(num)==0:
+            return None
+     
+        if num[0]> num[len(num)-1]:
+            large=0
+            small=len(num)-1
+        else:
+            large=len(num)-1
+            small=0
+        
+        found=False
+        while not found:
+            mid=(small+large)/2
+            if mid==small or mid==large:
+                found=True
+            elif num[mid]<=num[small]:
+                small=mid
+            else:
+                large=mid
+                
+        return num[small]

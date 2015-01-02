@@ -1,0 +1,16 @@
+class Solution:
+    # @param s, a string
+    # @return a string
+    def reverseWords(self, s):
+  
+        word=[]
+        reversed_word=[]
+        final=''
+        word=s.split()
+        reversed_word=word[::-1]
+   #     for item in reversed_word:
+#            final.appitem)
+        final=' '.join(reversed_word)
+ 
+        return final
+    

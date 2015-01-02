@@ -1,0 +1,19 @@
+class Solution:
+    # @param A, a list of integer
+    # @return an integer
+    def singleNumber(self, A):
+        
+        lookup={}
+        n = len(A)
+        
+        for i in range(n):
+            if A[i] in lookup:
+                if lookup[A[i]]==1:
+                    lookup[A[i]]=2
+                elif lookup[A[i]]==2:
+                    del lookup[A[i]]
+                    
+            else:
+                lookup[A[i]]=1
+                
+        return lookup.keys()[0]

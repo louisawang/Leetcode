@@ -1,0 +1,10 @@
+class Solution:
+    # @param a, a string
+    # @param b, a string
+    # @return a string
+    def addBinary(self, a, b):
+        a_bin='0b'+a
+        b_bin='0b'+b
+        total=int(a_bin,2)+int(b_bin,2)
+        
+        return bin(total)[2:]

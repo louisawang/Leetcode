@@ -1,0 +1,16 @@
+class Solution:
+    # @param s, a string
+    # @return an integer
+    def lengthOfLastWord(self, s):
+        words=s.split(" ")
+        last=words.pop()
+        while len(last)==0:
+            
+            if len(words)==0:
+                return 0
+                
+            else:
+                last=words.pop()
+            
+        return len(last)
+        

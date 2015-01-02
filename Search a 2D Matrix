@@ -1,0 +1,40 @@
+class Solution:
+    # @param matrix, a list of lists of integers
+    # @param target, an integer
+    # @return a boolean
+    def searchMatrix(self, matrix, target):
+        if len(matrix)==0:
+            return False
+        
+        n_rows=len(matrix)
+        n_col=len(matrix[0])
+        
+        left=0
+        right=n_rows-1
+        found=False
+        while left <=right and not found:
+            mid=(left+right)/2
+            if matrix[mid][0]==target:
+                found=True
+            else:
+                if matrix[mid][0]>target:
+                    right=mid-1
+                else:
+                    left=mid+1
+                    
+        if found==False:
+            left_1=0
+            right_1 = n_col-1
+            
+            while left_1<=right_1 and not found:
+                mid_1=(left_1+right_1)/2
+                if matrix[right][mid_1]==target:
+                    found=True
+                else:
+                    if matrix[right][mid_1]>target:
+                        right_1=mid_1-1
+                    else:
+                        left_1=mid_1+1
+                        
+        return found
+                    

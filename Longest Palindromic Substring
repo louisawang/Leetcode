@@ -1,0 +1,36 @@
+class Solution:
+    # @return a string
+   
+        
+    def longestPalindrome(self, s):
+        if len(s)<=1:
+            return s
+        final=0 
+        result=""
+        for i in range(len(s)-1):  # take i as center of potential palindrome string
+            
+            l=min(i, len(s)-i-1)  
+            temp=0
+            j=0
+            while j <=l and s[i-j]==s[i+j]:
+                j+=1
+            temp=(j-1)*2+1
+            
+            if temp>final:
+                final = temp
+                result=s[i-j+1:i+j]
+                
+            if s[i]==s[i+1]:
+                l=min(i, len(s)-i-2)
+                temp=0
+                j=0
+                while j <=l and s[i-j]==s[i+j+1]:
+                    j+=1
+                temp=(j-1)*2+2    
+                
+                if temp>final:
+                    final = temp    
+                    result=s[i-j+1:i+j+1]
+                    
+        
+        return result   
